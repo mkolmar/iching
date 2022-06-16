@@ -1,8 +1,9 @@
-# encoding: UTF-8
-module Dictionaries
+# frozen_string_literal: true
 
+module Dictionaries
   def list
-    { '111111'=> '1. Force (乾 qián); The Creative; Possessing Creative Power & Skill',
+    {
+      '111111'=> '1. Force (乾 qián); The Creative; Possessing Creative Power & Skill',
       '000000'=> '2. Field (坤 kūn); The Receptive; Needing Knowledge & Skill; Do not force matters and go with the flow',
       '100010'=> '3. Sprouting (屯 zhūn); Difficulty at the Beginning; Sprouting ',
       '010001'=> '4. Enveloping (蒙 méng); Youthful Folly; Detained, Enveloped and Inexperienced',
@@ -65,6 +66,7 @@ module Dictionaries
       '110011'=> '61. Centre Confirming (中孚 zhōng fú); Inner Truth; Staying Focused,Avoid Misrepresentation',
       '001100'=> '62. Small Exceeding (小過 xiǎo guò); Small Preponderance; Small Surpassing',
       '101010'=> '63. Already_Fording (既濟 jì jì); After Completion; Completion',
-      '010101'=> '64. Not-Yet Fording (未濟 wèi jì); Before Completion; Incompletion'}
+      '010101'=> '64. Not-Yet Fording (未濟 wèi jì); Before Completion; Incompletion'
+    }
   end
 end
