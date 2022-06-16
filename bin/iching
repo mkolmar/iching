@@ -4,5 +4,7 @@
 
 require 'rubygems'
 require_relative '../lib/iching.rb'
-Iching.new.display
+
+oracle_type = ARGV[0] == '--stalk' ? :stalk : :coin
+Iching.new.display(oracle_type: oracle_type)
 
