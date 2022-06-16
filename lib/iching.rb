@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'dictionaries.rb'
+require_relative 'hexagram_map.rb'
 require_relative 'hexagram.rb'
 
 class Iching

@@ -2,10 +2,9 @@
 
 require_relative 'oracle'
 require_relative 'hexagram_display'
+require_relative 'hexagram_map'
 
 class Hexagram
-  include ::Dictionaries
-
   attr_reader :hex
   attr_accessor :oracle_type
 
@@ -25,7 +24,7 @@ class Hexagram
 
   def hex_name
     hex_binary = hex.map{ |n| HexagramDisplay.bin_hex_key[n] }.join.reverse
-    list[hex_binary]
+    HexagramMap.lookup(hex_binary)
   end
 
   def transform(line)
