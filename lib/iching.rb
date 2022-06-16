@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'hexagram_map.rb'
-require_relative 'hexagram.rb'
+require_relative 'iching/display.rb'
 
-class Iching
-  def display(oracle_type: :coin)
-    hex1 = Hexagram.new(oracle_type: oracle_type)
-    puts hex1.hex_symbol, hex1.hex_name
-    return if (hex1.hex & [6, 9]).none?
+module Iching
+  VERSION = '0.4.0'
 
-    hex1.change 
-    puts hex1.hex_symbol, hex1.hex_name
+  class << self
+    def new(oracle_type: :coin)
+      Display.new(oracle_type: :coin)
+    end
   end
 end
