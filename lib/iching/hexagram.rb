@@ -6,25 +6,28 @@ require_relative 'hexagram_map'
 
 module Iching
   class Hexagram
-    attr_accessor :oracle_type, :hexagram
+    attr_accessor :oracle_type, :lines
 
-    def initialize(oracle_type: :coin, hexagram: nil)
+    def initialize(oracle_type: :coin, lines: nil)
       self.oracle_type = oracle_type
-      self.hexagram = hexagram.nil? ? generate_hex : hexagram
+      self.lines = lines.nil? ? generate : lines
     end
 
-    def generate_hex
+    def generate
       oracle = Oracle.new(type: oracle_type) 
       6.times.map{ oracle.line }.reverse
     end
 
-    def hex_symbol
-      hexagram.map{ |n| HexagramDisplay.hexagram_key[n] }.join("\n")
+    def symbol
+      lines.map{ |n| HexagramDisplay.symbol[n] }.join("\n")
     end
 
-    def hex_name
-      hex_binary = hexagram.map{ |n| HexagramDisplay.bin_hex_key[n] }.join.reverse
-      HexagramMap.lookup(hex_binary)
+    def binary
+      lines.map{ |n| HexagramDisplay.bin_hex_key[n] }.join.reverse
+    end
+
+    def name
+      HexagramMap.lookup(binary)
     end
 
     def transform(line)
@@ -36,7 +39,7 @@ module Iching
     end
 
     def change
-      hexagram.map!{ |line| transform(line) }
+      lines.map!{ |line| transform(line) }
     end
   end
 end

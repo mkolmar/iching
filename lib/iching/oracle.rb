@@ -37,9 +37,7 @@ module Iching
     end
 
     def line
-      return coin if type == :coin
-
-      stalk
+      type == :stalk ? stalk : coin
     end
   end
 end

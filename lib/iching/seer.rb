@@ -4,25 +4,25 @@ require_relative 'hexagram_map.rb'
 require_relative 'hexagram.rb'
 
 module Iching
-  class Display
-    attr_accessor :oracle_type, :hex
+  class Seer
+    attr_accessor :oracle_type, :hexagram
 
     def initialize(oracle_type: :coin)
       self.oracle_type = oracle_type
+      self.hexagram = Hexagram.new(oracle_type: oracle_type)
     end
 
     def no_changing_lines?
-      (hex.hexagram & [6, 9]).none?
+      (hexagram.lines & [6, 9]).none?
     end
 
-    def full(oracle_type: :coin)
-      self.hex = Hexagram.new(oracle_type: oracle_type)
-      puts hex.hex_symbol, hex.hex_name
+    def display
+      puts hexagram.symbol, hexagram.name
       return if no_changing_lines?
 
-      hex.change 
+      hexagram.change 
       puts
-      puts hex.hex_symbol, hex.hex_name
+      puts hexagram.symbol, hexagram.name
     end
   end
 end
